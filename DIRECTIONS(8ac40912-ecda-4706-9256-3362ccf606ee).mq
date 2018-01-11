@@ -2,7 +2,13 @@ Dim screenX,screenY
 screenX = GetScreenX()
 screenY = GetScreenY()
 
-S_reset()
+
+s_zoomout 
+s_zoomout 
+
+S_reset 
+S_reset 
+
 
 //l_msg 
 
@@ -63,4 +69,13 @@ Function s_up_right()//swipeUPRIGHT
 	Swipe screenX / 2, screenY / 2, screenX, screenY
 	Swipe screenX / 2, screenY / 2, screenX, screenY
 	Delay 500
+End Function
+
+Function s_zoomout()
+	TouchDown 0, 0, 1
+	TouchDown screenX, screenY, 2
+	TouchMove screenX / 2, screenY / 2, 1, 200
+	TouchMove screenX / 2, screenY / 2, 2, 200
+	TouchUp 1
+	TouchUp 2	
 End Function
