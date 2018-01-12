@@ -12,17 +12,12 @@ S_reset
 
 //l_msg 
 
-
-//Function l_msg()
-//ShowMessage "\ntest\n", 1000, 350, 350
-//Delay 5000
-//End Function
-
-Function S_reset()
-ShowMessage ("Resetview")
-s_down_right 
-s_down_right 
-s_down_right 
+//===================================================================
+// Common functions
+//===================================================================
+Function tapd(x, y, delays) //tapd(606,1797, 500)
+    	Tap x, y
+    	Delay delays
 End Function
 
 Function s_right()//swipeRIGHT
@@ -78,4 +73,16 @@ Function s_zoomout()
 	TouchMove screenX / 2, screenY / 2, 2, 200
 	TouchUp 1
 	TouchUp 2	
+End Function
+
+//Function l_msg()
+//ShowMessage "\ntest\n", 1000, 350, 350
+//Delay 5000
+//End Function
+
+Function S_reset()
+	ShowMessage ("Resetview")
+	s_down_right 
+	s_down_right 
+	s_down_right 
 End Function
