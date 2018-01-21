@@ -1,13 +1,18 @@
 Dim screenX,screenY
 screenX = GetScreenX()
 screenY = GetScreenY()
+Delay 1000
+Dim MESSAGE 
+Dim timeD
 
 
-s_zoomout 
-s_zoomout 
-
-S_reset 
-S_reset 
+S_reset()
+s_down()
+//s_zoomout 
+//s_zoomout 
+//
+//S_reset 
+//S_reset 
 
 
 //l_msg 
@@ -22,67 +27,62 @@ End Function
 
 Function s_right()//swipeRIGHT
 	Swipe screenX / 2, screenY / 2, screenX / 2, screenY
-	Swipe screenX / 2, screenY / 2, screenX / 2, screenY
 	Delay 500
 End Function
 Function s_left()//swipeLEFT
-	Swipe screenX / 2, screenY / 2, screenX / 2, 0
 	Swipe screenX / 2, screenY / 2, screenX / 2, 0
 	Delay 500
 End Function
 Function s_up()//swipeUP
 	Swipe screenX / 2, screenY / 2, screenX, screenY / 2
-	Swipe screenX / 2, screenY / 2, screenX, screenY / 2
-Delay 500
+	Delay 500
 End Function
 
 Function s_down()//swipeDOWN
-	Swipe screenX / 2, screenY / 2, 0, screenY / 2
 	Swipe screenX / 2, screenY / 2, 0, screenY / 2
 	Delay 500
 End Function
 
 Function s_down_right()//swipeDOWNRIGHT
 	Swipe screenX / 2, screenY / 2, 0, screenY
-	Swipe screenX / 2, screenY / 2, 0, screenY
 	Delay 500
 End Function
 
 Function s_up_left()//swipeUPLEFT
-	Swipe screenX / 2, screenY / 2, ScreenX, 0
 	Swipe screenX / 2, screenY / 2, ScreenX, 0
 	Delay 500
 End Function
 
 Function s_down_left()//swipeDOWNLEFT
 	Swipe screenX / 2, screenY / 2, 0, 0
-	Swipe screenX / 2, screenY / 2, 0, 0
 	Delay 500
 End Function
 
 Function s_up_right()//swipeUPRIGHT
 	Swipe screenX / 2, screenY / 2, screenX, screenY
-	Swipe screenX / 2, screenY / 2, screenX, screenY
 	Delay 500
 End Function
 
 Function s_zoomout()
-	TouchDown 0, 0, 1
-	TouchDown screenX, screenY, 2
-	TouchMove screenX / 2, screenY / 2, 1, 200
-	TouchMove screenX / 2, screenY / 2, 2, 200
+	TouchDown screenX / 2, screenY / 2, 1
+	TouchDown screenX / 2 , screenY / 4, 2
+	TouchMove screenX / 2, screenY/ 2, 2, 500
 	TouchUp 1
 	TouchUp 2	
 End Function
 
-//Function l_msg()
-//ShowMessage "\ntest\n", 1000, 350, 350
-//Delay 5000
-//End Function
 
 Function S_reset()
-	ShowMessage ("Resetview")
+	MESSAGE = "RESETVIEW"
+	msg_bleft 
+	s_zoomout()
 	s_down_right 
 	s_down_right 
 	s_down_right 
+	s_down_right 
+End Function
+
+// Text boxs
+Function msg_bleft()
+	ShowMessage "\n"&MESSAGE&"\n",500,0,0
 End Function
