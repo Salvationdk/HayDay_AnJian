@@ -10,14 +10,28 @@ Delay 1000
 
 
 //TEST
-MESSAGE = "Top Left\nBOX"
-msgb_top_left 
-MESSAGE = "Top Right\nBOX"
-msgb_top_right 
-MESSAGE = "Bottom Left\nBOX"
-msgb_bottom_left
-MESSAGE = "Bottom Right\nBOX"
-msgb_bottom_right 
+//MESSAGE = "Top Left\nBOX"
+//msgb_top_left 
+//MESSAGE = "Top Right\nBOX"
+//msgb_top_right 
+//MESSAGE = "Bottom Left\nBOX"
+//msgb_bottom_left
+//MESSAGE = "Bottom Right\nBOX"
+//msgb_bottom_right 
+
+
+Dim i=0
+While i = 0
+Dim x1,y1
+    Dim RETCOORD = CatchTouchPoint(1)
+x1=  "x : " , RETCOORD [ 1 ] [ 1 ]
+y1=  "y : " , RETCOORD [ 1 ] [ 2 ]
+MESSAGE = x1 & "\n" & y1
+msgb
+Wend
+
+
+
 //TESTEND
 //S_reset()
 //s_down()
@@ -95,6 +109,12 @@ Function S_reset()
 End Function
 
 // Text box placement---------------------------------------
+
+Function msgb()
+	ShowMessage "\n" & MESSAGE & "\n"
+End Function
+
+
 Function msgb_top_right()
 	ShowMessage "\n" & MESSAGE & "\n", 0, ScreenY,0
 	Delay 1000
