@@ -1,13 +1,26 @@
+Import "GK.lua"
+Import "ShanHai.lua"
+
+
 Dim screenX,screenY
 screenX = GetScreenX()
 screenY = GetScreenY()
-Delay 1000
 Dim MESSAGE 
-Dim timeD
+Delay 1000
 
 
-S_reset()
-s_down()
+//TEST
+MESSAGE = "Top Left\nBOX"
+msgb_top_left 
+MESSAGE = "Top Right\nBOX"
+msgb_top_right 
+MESSAGE = "Bottom Left\nBOX"
+msgb_bottom_left
+MESSAGE = "Bottom Right\nBOX"
+msgb_bottom_right 
+//TESTEND
+//S_reset()
+//s_down()
 //s_zoomout 
 //s_zoomout 
 //
@@ -74,7 +87,6 @@ End Function
 
 Function S_reset()
 	MESSAGE = "RESETVIEW"
-	msg_bleft 
 	s_zoomout()
 	s_down_right 
 	s_down_right 
@@ -82,7 +94,24 @@ Function S_reset()
 	s_down_right 
 End Function
 
-// Text boxs
-Function msg_bleft()
-	ShowMessage "\n"&MESSAGE&"\n",500,0,0
+// Text box placement---------------------------------------
+Function msgb_top_right()
+	ShowMessage "\n" & MESSAGE & "\n", 0, ScreenY,0
+	Delay 1000
 End Function
+
+Function msgb_top_left()
+	ShowMessage "\n" & MESSAGE & "\n", 0, 0,0
+	Delay 1000
+End Function
+
+Function msgb_bottom_left()
+	ShowMessage "\n" & MESSAGE & "\n", 0, 0,screenX
+	Delay 1000
+End Function
+Function msgb_bottom_right()
+	ShowMessage "\n" & MESSAGE & "\n", 0, ScreenY,screenX
+	Delay 1000
+End Function
+//Text Box end---------------------------------------------------
+
