@@ -29,10 +29,17 @@ Delay 1000
 Dim i=0
 While i = 0
 Dim RETCOORD = CatchTouchPoint(1)
+Dim RETCOORD2 = CatchTouchPoint(2)
 Dim x1 = RETCOORD [ 1 ] [ 1 ]
 dim y1 = RETCOORD [ 1 ] [ 2 ]
+Dim x2 = RETCOORD [ 2 ] [ 1 ]
+dim y2 = RETCOORD [ 2 ] [ 2 ]
+//Touchpoint
 MESSAGE = "DEBUG INFO\nX: " & x1 & "\nY: " & y1 & ""
-msgb_bottom_right
+msgb_bottom_right 
+// Touchcoord start / Touchcoord end
+MESSAGE = "DEBUG INFO\nX1: " & x1 & "\nY1: " & y1 & "\nX2: " & x2 & "\Y2:" & y2 & ""
+msgb_bottom_left
 Wend
 //DEBUG END
 //===================================================================
@@ -141,4 +148,3 @@ End Function
 //===================================================================
 // 
 //===================================================================
-
