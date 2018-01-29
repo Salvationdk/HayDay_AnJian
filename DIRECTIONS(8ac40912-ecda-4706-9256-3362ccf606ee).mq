@@ -1,48 +1,46 @@
+//===================================================================
+// OPEN SOURCE HAYDAY , Anjian Script...
+// You are welcome to contribute with functions, and codes.
+//===================================================================
+
+
+
+//===================================================================
+// Imports and DIM
+//===================================================================
 Import "GK.lua"
 Import "ShanHai.lua"
-
-
 Dim screenX,screenY
 screenX = GetScreenX()
 screenY = GetScreenY()
 Dim MESSAGE 
 Delay 1000
+//===================================================================
+// END imports and DIM
+//===================================================================
 
 
-//TEST
-//MESSAGE = "Top Left\nBOX"
-//msgb_top_left 
-//MESSAGE = "Top Right\nBOX"
-//msgb_top_right 
-//MESSAGE = "Bottom Left\nBOX"
-//msgb_bottom_left
-//MESSAGE = "Bottom Right\nBOX"
-//msgb_bottom_right 
 
+//===================================================================
+// Start
+//===================================================================
 
+//DEBUG : XY CORD DISPLAY OF TOUCH
 Dim i=0
 While i = 0
-Dim x1,y1
-    Dim RETCOORD = CatchTouchPoint(1)
-x1=  "x : " , RETCOORD [ 1 ] [ 1 ]
-y1=  "y : " , RETCOORD [ 1 ] [ 2 ]
-MESSAGE = x1 & "\n" & y1
-msgb
+Dim RETCOORD = CatchTouchPoint(1)
+Dim x1 = RETCOORD [ 1 ] [ 1 ]
+dim y1 = RETCOORD [ 1 ] [ 2 ]
+MESSAGE = "DEBUG INFO\nX: " & x1 & "\nY: " & y1 & ""
+msgb_bottom_right
 Wend
+//DEBUG END
+//===================================================================
+// Start end
+//===================================================================
 
 
 
-//TESTEND
-//S_reset()
-//s_down()
-//s_zoomout 
-//s_zoomout 
-//
-//S_reset 
-//S_reset 
-
-
-//l_msg 
 
 //===================================================================
 // Common functions
@@ -56,10 +54,12 @@ Function s_right()//swipeRIGHT
 	Swipe screenX / 2, screenY / 2, screenX / 2, screenY
 	Delay 500
 End Function
+
 Function s_left()//swipeLEFT
 	Swipe screenX / 2, screenY / 2, screenX / 2, 0
 	Delay 500
 End Function
+
 Function s_up()//swipeUP
 	Swipe screenX / 2, screenY / 2, screenX, screenY / 2
 	Delay 500
@@ -98,9 +98,12 @@ Function s_zoomout()
 	TouchUp 2	
 End Function
 
+//===================================================================
+// View reset
+//===================================================================
 
 Function S_reset()
-	MESSAGE = "RESETVIEW"
+	MESSAGE = "Fixing View..."
 	s_zoomout()
 	s_down_right 
 	s_down_right 
@@ -108,7 +111,9 @@ Function S_reset()
 	s_down_right 
 End Function
 
-// Text box placement---------------------------------------
+//===================================================================
+// Textbox placement on screen
+//===================================================================
 
 Function msgb()
 	ShowMessage "\n" & MESSAGE & "\n"
@@ -133,5 +138,7 @@ Function msgb_bottom_right()
 	ShowMessage "\n" & MESSAGE & "\n", 0, ScreenY,screenX
 	Delay 1000
 End Function
-//Text Box end---------------------------------------------------
+//===================================================================
+// 
+//===================================================================
 
