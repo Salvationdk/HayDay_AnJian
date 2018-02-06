@@ -24,22 +24,26 @@ Delay 1000
 //===================================================================
 // Start
 //===================================================================
+S_reset 
+Swipe 740, 440, 740, 270, 200
+Swipe 580, 150, 870, 200, 200
 
-//DEBUG : XY CORD DISPLAY OF TOUCH
+
+
+
+//DEBUG : XY CORD DISPLAY OF TOUCH 1 & 2
 Dim i=0
 While i = 0
-Dim RETCOORD = CatchTouchPoint(2)
-Dim x1 = RETCOORD [ 1 ] [ 1 ]
-dim y1 = RETCOORD [ 1 ] [ 2 ]
+	Dim RETCOORD = CatchTouchPoint(2)
+	Dim x1 = RETCOORD [ 1 ] [ 1 ]
+	dim y1 = RETCOORD [ 1 ] [ 2 ]
+	dim x2 = RETCOORD [ 2 ] [ 1 ]
+	dim y2 = RETCOORD [ 2 ] [ 2 ]
 //Touchpoint
-MESSAGE = "DEBUG INFO\nX: " & x1 & "\nY: " & y1 & ""
-msgb_bottom_right 
-dim x2 = RETCOORD [ 2 ] [ 1 ]
-dim y2 = RETCOORD [ 2 ] [ 2 ]
-MESSAGE = "DEBUG INFO\nX: " & x2 & "\nY: " & y2 & ""
-// Touchcoord start / Touchcoord end
-//MESSAGE = "DEBUG INFO\nX1: " & x1 & "\nY1: " & y1 & "\nX2: " & x2 & "\Y2:" & y2 & ""
-msgb_bottom_left
+	MESSAGE = " X1: " & x1 & "\n Y1: " & y1 & "\n X2: " & x2 & "\n Y2: " & y2 & ""
+	Vibrate 1000 
+	msgb_bottom_right 
+	TracePrint "Grabbed Coordinates:  " & MESSAGE
 Wend
 //DEBUG END
 //===================================================================
@@ -143,8 +147,10 @@ Function msgb_bottom_left()
 End Function
 Function msgb_bottom_right()
 	ShowMessage "\n" & MESSAGE & "\n", 0, ScreenY,screenX
-	Delay 1000
+	Delay 300
 End Function
 //===================================================================
 // 
 //===================================================================
+
+
