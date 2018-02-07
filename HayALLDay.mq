@@ -3,6 +3,9 @@
 // You are welcome to contribute with functions, and codes.
 //===================================================================
 
+KillApp "com.supercell.hayday"
+
+
 
 
 //===================================================================
@@ -18,8 +21,18 @@ Delay 1000
 //===================================================================
 // END imports and DIM
 //===================================================================
-
-
+RunApp "com.supercell.hayday"
+MESSAGE = "\nHayDay AllDay v0.01\n\n\n             By\n\n        BARCODE"
+msgb
+Delay 5000
+Dim LOADING="E6D7AB"
+While LOADING = "E6D7AB"
+	LOADING = GetPixelColor(379, 418,0)
+		MESSAGE = "Game Loading..."
+	msgb
+Wend
+	MESSAGE = "Game loaded"
+	msgb
 
 //===================================================================
 // Start
@@ -27,9 +40,6 @@ Delay 1000
 S_reset 
 Swipe 740, 440, 740, 270, 200
 Swipe 580, 150, 870, 200, 200
-
-
-
 
 //DEBUG : XY CORD DISPLAY OF TOUCH 1 & 2
 Dim i=0
@@ -152,5 +162,3 @@ End Function
 //===================================================================
 // 
 //===================================================================
-
-
