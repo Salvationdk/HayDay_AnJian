@@ -78,7 +78,44 @@ Wend
 // Start end
 //===================================================================
 
-
+//NEW FUNCTION NEEd MORE WORK
+Dim AppName="com.supercell.hayday"
+If AppStart(AppName)
+	TracePrint "Has successfully started the game"
+	Delay 3000
+End If
+If AppRestart(AppName)
+	Traceprint "Game is restarted"
+End If
+Function AppStart(AppName)
+	AppStart=False
+	dim SinceStart
+	Dim arr()
+	arr=GetRunningApp()
+	For each n in arr
+		If n = AppName Then SinceStart = False:Exit For Else SinceStart = True
+	Next
+	If SinceStart Then TracePrint "自动启动游戏":RunApp AppName:AppStart=true
+End Function
+Function AppRestart(AppName)
+	dim 自重启
+	Dim arr()
+	arr=GetRunningApp()
+	For each n in arr
+		If n = AppName Then 自重启 = true:Exit For Else 自重启 = False
+	Next
+	If 自重启 Then
+		KillApp AppName
+		For i = 5 to 1 Step -1
+			TracePrint i&"渺后自动重启游戏"
+			Delay 1000
+		Next
+		If AppStart(AppName)
+			AppRestart=true
+		End If
+	End If
+End Function
+//
 
 
 //===================================================================
