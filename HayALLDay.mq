@@ -95,19 +95,19 @@ Function AppStart(AppName)
 	For each n in arr
 		If n = AppName Then SinceStart = False:Exit For Else SinceStart = True
 	Next
-	If SinceStart Then TracePrint "自动启动游戏":RunApp AppName:AppStart=true
+	If SinceStart Then TracePrint "Automatically start the game":RunApp AppName:AppStart=true
 End Function
 Function AppRestart(AppName)
-	dim 自重启
+	dim YYY
 	Dim arr()
 	arr=GetRunningApp()
 	For each n in arr
-		If n = AppName Then 自重启 = true:Exit For Else 自重启 = False
+		If n = AppName Then YYY = true:Exit For Else YYY = False
 	Next
-	If 自重启 Then
+	If YYY Then
 		KillApp AppName
 		For i = 5 to 1 Step -1
-			TracePrint i&"渺后自动重启游戏"
+			TracePrint i&" automatically restart the game"
 			Delay 1000
 		Next
 		If AppStart(AppName)
