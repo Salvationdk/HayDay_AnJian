@@ -1,0 +1,117 @@
+Import "GK.lua"
+Import "ShanHai.lua"
+Dim screenX,screenY
+screenX = GetScreenX()
+screenY = GetScreenY()
+Dim MESSAGE 
+Dim i
+S_reset()
+Tap 310, 450
+
+//===================================================================
+// Textbox placement on screen
+//===================================================================
+
+Function msgb()
+	ShowMessage "\n" & MESSAGE & "\n"
+	Traceprint"Posted a messagebox"
+End Function
+
+
+Function msgb_top_right()
+	ShowMessage "\n" & MESSAGE & "\n", 0, ScreenY,0
+	Delay 1000
+End Function
+
+Function msgb_top_left()
+	ShowMessage "\n" & MESSAGE & "\n", 0, 0,0
+	Delay 1000
+End Function
+
+Function msgb_bottom_left()
+	ShowMessage "\n" & MESSAGE & "\n", 0, 0,screenX
+	Delay 1000
+End Function
+Function msgb_bottom_right()
+	ShowMessage "\n" & MESSAGE & "\n", 0, ScreenY,screenX
+	Delay 300
+End Function
+//===================================================================
+// 
+//===================================================================
+
+Function m_up()//swipeRIGHT
+	Swipe screenX / 2, screenY / 2, screenX / 2, screenY
+	Delay 50
+	Traceprint"Moved up"
+End Function
+
+Function m_down()//swipeLEFT
+	Swipe screenX / 2, screenY / 2, screenX / 2, 0
+	Delay 50
+	Traceprint"Moved down"
+End Function
+
+Function m_left()//swipeUP
+	Swipe screenX / 2, screenY / 2, screenX, screenY / 2
+	Delay 50
+	Traceprint"Moved to the left"
+End Function
+
+Function m_right()//swipeDOWN
+	Swipe screenX / 2, screenY / 2, 0, screenY / 2
+	Delay 50
+	Traceprint"Moved to the right"
+End Function
+
+Function s_down_right()//swipeDOWNRIGHT
+	Swipe screenX / 2, screenY / 2, 0, screenY
+	Delay 500
+End Function
+
+Function s_up_left()//swipeUPLEFT
+	Swipe screenX / 2, screenY / 2, ScreenX, 0
+	Delay 500
+End Function
+
+Function s_down_left()//swipeDOWNLEFT
+	Swipe screenX / 2, screenY / 2, 0, 0
+	Delay 500
+End Function
+
+Function s_up_right()//swipeUPRIGHT
+	Swipe screenX / 2, screenY / 2, screenX, screenY
+	Delay 500
+End Function
+
+Function s_zoomout()
+	TouchDown screenX / 2, screenY / 2, 1
+	TouchDown screenX / 2 , screenY / 4, 2
+	TouchMove screenX / 2, screenY/ 2, 2, 500
+	TouchUp 1
+	TouchUp 2
+	Traceprint"Zoomed Out"
+End Function
+
+//===================================================================
+// View reset
+//===================================================================
+
+Function S_reset()
+	MESSAGE = "Fixing View..."
+	msgb
+	s_zoomout 
+	m_up 
+	m_up 
+	m_up 
+	m_up 
+	m_up 
+	m_left 
+	m_left 
+	m_left 
+	m_left 
+	m_left 
+	MESSAGE = "Fixed!"
+	msgb
+End Function
+
