@@ -1,0 +1,37 @@
+Dim APPNAME="com.tencent.tmgp.rxcq"
+If RUNAPP(APPNAME)
+	TracePrint "Has successfully started the game"
+	Delay 3000
+End If
+If RESTARTAPP(APPNAME)
+	Traceprint "App is restarted"
+End If
+Function STARTAPP(APPNAME)
+	STARTAPP=False
+	dim SELFSTART
+	Dim arr()
+	arr=GetRunningApp()
+	For each n in arr
+		If n = APPNAME Then SELFSTART = False:Exit For Else SELFSTART = True
+	Next
+	If SELFSTART Then TracePrint "Automatically start the app":RunApp APPNAME:STARTAPP=true
+End Function
+Function RESTARTAPP(APPNAME)
+	dim SELFRESTART
+	Dim arr()
+	arr=GetRunningApp()
+	For each n in arr
+		If n = APPNAME Then SELFRESTART = true:Exit For Else SELFRESTART ) False
+	Next
+	If SELFRESTART Then
+		KillApp APPNAME
+		For i = 5 to 1 Step -1
+			TracePrint i&"Automatically restart the app afterwards"
+			Delay 1000
+		Next
+		If STARTAPP(APPNAME)
+			RESTARTAPP=true
+		End If
+	End If
+End Function
+
