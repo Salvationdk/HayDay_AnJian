@@ -1,4 +1,4 @@
-Dim APPNAME="com.tencent.tmgp.rxcq"
+Dim APPNAME="com.supercell.hayday"
 If RUNAPP(APPNAME)
 	TracePrint "Has successfully started the game"
 	Delay 3000
