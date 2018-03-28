@@ -1,0 +1,39 @@
+// OPEN LOGWRITE
+Log.Open 
+// -------
+Dim  DetectThread
+Thread.SetShareVar "SCREENCHANGE", false
+DetectThread = Thread.Start(test_thread)
+Do
+        Delay 500
+    If Thread.GetShareVar("SCREENCHANGE") = true Then 
+              TracePrint "--- Stuck for more than 10 seconds, ending thread ---"
+              Thread.Stop(DetectThread)
+              TracePrint "--- Exit script and thread ---"
+              		TracePrint GetTempDir()
+					Log.Close
+              EndScript
+              	
+    End If
+Loop
+
+Sub test_thread()
+        Dim StartingColor = GetPixelColor(109,298) 
+        Dim SecondsA = 0
+    Do
+                  Delay 1000
+            Dim EndingColor = GetPixelColor(109,298)
+                If StartingColor = EndingColor Then 
+                        SecondsA = SecondsA + 1
+                        If SecondsA > 10 Then 
+                                Thread.SetShareVar "SCREENCHANGE", true
+                                Exit Do
+                        End If
+                        TracePrint "--- Interface has not changed last " & SecondsA & " Seconds ---"
+                Else 
+                        TracePrint "--- Interface has changed ---"
+                        StartingColor = GetPixelColor(109,298)
+                        SecondsA = 0
+                End If
+    Loop
+End Sub
